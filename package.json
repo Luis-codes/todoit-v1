@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "compile": "tsc"
+    "compile": "tsc",
+    "serve": "browser-sync start --server --watch"
   },
   "devDependencies": {
+    "browser-sync": "^2.26.7",
     "typescript": "3.4.4"
   },
   "author": "",
