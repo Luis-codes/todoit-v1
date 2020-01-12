@@ -20,3 +20,18 @@ function addTodo() {
         todoInput.value = '';
     }
 }
+var todoListDiv = document.getElementById('todoListContainer');
+function updateTodoList() {
+    console.log("Updating the rendered todo list");
+    todoListDiv.innerHTML = '';
+    todoListDiv.textContent = ''; // Edge, ...
+    var ul = document.createElement('ul');
+    ul.setAttribute('id', 'todoList');
+    todoListDiv.appendChild(ul);
+    todoList.forEach(function (item) {
+        var li = document.createElement('li');
+        li.setAttribute('class', 'todo-list-item');
+        li.innerText = item;
+        ul.appendChild(li);
+    });
+}
