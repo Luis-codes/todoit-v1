@@ -37,13 +37,7 @@ function updateTodoList() {
     todoList.forEach(function (item) {
         var li = document.createElement('li');
         li.setAttribute('class', 'todo-list-item');
-        li.innerText = href;
-        '#';
-        onclick = "removeTodoListItem(\"" + item + "\")" > $;
-        {
-            item;
-        }
-        /a>;;
+        li.innerHTML = "<a href='#' \n        onclick='removeTodoListItem(\"" + item + "\")'>" + item + "</a>";
         ul.appendChild(li);
     });
 }
