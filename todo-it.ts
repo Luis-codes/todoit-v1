@@ -134,3 +134,24 @@ class ColoredCar {
     }
 }
 
+abstract class Shape {
+    constructor(private readonly _shapeName: string) {
+        this.displayInformation();
+    }
+
+    abstract displayArea(): void;
+    abstract displayPerimeter(): void;
+
+    protected get shapeName(): string {
+        return this._shapeName
+    }
+
+    public displayInformation(): void {
+        console.log(`This shape is a ${this._shapeName}`);
+    }
+
+    public doSomething(): void {
+        console.log("Not Interesting");
+    }
+}
+

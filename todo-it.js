@@ -1,3 +1,4 @@
+"use strict";
 console.log("ToDoIt");
 var todoList = [];
 console.log("Current todo list: ", todoList);
@@ -105,4 +106,24 @@ var ColoredCar = /** @class */ (function () {
     };
     ColoredCar.DEFAULT_COLOR = "Red";
     return ColoredCar;
+}());
+var Shape = /** @class */ (function () {
+    function Shape(_shapeName) {
+        this._shapeName = _shapeName;
+        this.displayInformation();
+    }
+    Object.defineProperty(Shape.prototype, "shapeName", {
+        get: function () {
+            return this._shapeName;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Shape.prototype.displayInformation = function () {
+        console.log("This shape is a " + this._shapeName);
+    };
+    Shape.prototype.doSomething = function () {
+        console.log("Not Interesting");
+    };
+    return Shape;
 }());
