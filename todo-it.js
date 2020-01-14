@@ -77,3 +77,32 @@ function removeTodoListItem(itemToRemove) {
     // apply the todo list filter
     filterTodoList();
 }
+var Car = /** @class */ (function () {
+    function Car() {
+    }
+    return Car;
+}());
+var car = new Car();
+var ColoredCar = /** @class */ (function () {
+    function ColoredCar(color) {
+        this._color = color;
+    }
+    ColoredCar.prototype.displayColor = function () {
+        console.log("Color of this car: " + this._color);
+    };
+    Object.defineProperty(ColoredCar.prototype, "color", {
+        get: function () {
+            return this._color;
+        },
+        set: function (color) {
+            this._color = color;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    ColoredCar.prototype.resetColor = function () {
+        this._color = ColoredCar.DEFAULT_COLOR;
+    };
+    ColoredCar.DEFAULT_COLOR = "Red";
+    return ColoredCar;
+}());
