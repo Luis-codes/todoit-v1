@@ -1,4 +1,16 @@
-"use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 console.log("ToDoIt");
 var todoList = [];
 console.log("Current todo list: ", todoList);
@@ -127,3 +139,65 @@ var Shape = /** @class */ (function () {
     };
     return Shape;
 }());
+var Square = /** @class */ (function (_super) {
+    __extends(Square, _super);
+    function Square(_width) {
+        var _this = _super.call(this, "Square") || this;
+        _this._width = _width;
+        return _this;
+    }
+    Square.prototype.displayArea = function () {
+        var area = this._width * this._width;
+        console.log("This " + this.shapeName + " has an area of: " + area);
+    };
+    Square.prototype.displayPerimeter = function () {
+        var perimeter = 2 * (this._width + this._width);
+        console.log("This " + this.shapeName + " has a perimeter of: " + perimeter);
+    };
+    Square.prototype.doSomething = function () {
+        console.log("Something more interesting");
+    };
+    return Square;
+}(Shape));
+var square = new Square(5);
+square.displayArea();
+square.displayPerimeter();
+square.doSomething();
+var Calculator = /** @class */ (function () {
+    function Calculator(_currentValue) {
+        if (_currentValue === void 0) { _currentValue = 0; }
+        this._currentValue = _currentValue;
+    }
+    Calculator.prototype.add = function (a) {
+        this._currentValue += a;
+        return this;
+    };
+    Calculator.prototype.subtract = function (a) {
+        this._currentValue -= a;
+        return this;
+    };
+    Calculator.prototype.multiply = function (a) {
+        this._currentValue *= a;
+        return this;
+    };
+    Calculator.prototype.divide = function (a) {
+        this._currentValue /= a;
+        return this;
+    };
+    Object.defineProperty(Calculator.prototype, "value", {
+        get: function () {
+            return this._currentValue;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    return Calculator;
+}());
+var result = new Calculator(0)
+    .add(5)
+    .multiply(2)
+    .add(10)
+    .divide(4)
+    .subtract(2)
+    .value;
+console.log("Result: " + result);
