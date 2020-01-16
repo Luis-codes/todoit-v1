@@ -233,3 +233,74 @@ foo({
     firstName: "Sebastien",
     lastName: "Dubois"
 });
+
+function performCalculation(
+    a: number,
+    b: number,
+    calculationFn: (x: number, y: number) => number
+): void {
+    console.log(`The result is ${calculationFn(a, b) }`);
+}
+performCalculation(
+    5,
+    10,
+    (x: number, y: number) => x + y
+);
+
+type Thing = {
+    name: string,
+    description: string
+};
+
+const myThing: Thing = {
+    name: "Computer",
+    description: "A thing that can perform calculation"
+};
+
+interface MusicPlayer {
+    play(): void;
+    pause(): void;
+    stop(): void;
+    rewind(seconds: number): void;
+    fastForward(seconds: number): void;
+}
+
+class BasicMusicPlayer implements MusicPlayer {
+    fastForward(seconds: number): void {
+        console.log(`Moving forward ${seconds} seconds`);
+    }
+
+    pause(): void {
+        console.log("Pausing");
+    }
+
+    play(): void {
+        console.log("Playing")
+    }
+
+    rewind(seconds: number): void {
+        console.log(`Rewinding ${seconds}`);
+    }
+
+    stop(): void {
+        console.log("Stopping");
+    }
+}
+
+interface Person {
+    firstName: string,
+    lastName: string,
+    age: number
+}
+
+function sayHelloTo(bar: Person): void {
+    console.log(`Hello ${bar.firstName}.. or should i call you Mr.${bar.lastName}?`);
+}
+
+let johnDoe: Person = {
+    firstName: "John",
+    lastName: "Doe",
+    age: 42
+};
+
+sayHelloTo(johnDoe);

@@ -201,3 +201,51 @@ var result = new Calculator(0)
     .subtract(2)
     .value;
 console.log("Result: " + result);
+var plane = {
+    name: "Plane",
+    description: "Something that flies"
+};
+function foo(bar) {
+    console.log("Hello " + bar.firstName + ".. or should I call you Mr." + bar.lastName + "?");
+}
+foo({
+    firstName: "Sebastien",
+    lastName: "Dubois"
+});
+function performCalculation(a, b, calculationFn) {
+    console.log("The result is " + calculationFn(a, b));
+}
+performCalculation(5, 10, function (x, y) { return x + y; });
+var myThing = {
+    name: "Computer",
+    description: "A thing that can perform calculation"
+};
+var BasicMusicPlayer = /** @class */ (function () {
+    function BasicMusicPlayer() {
+    }
+    BasicMusicPlayer.prototype.fastForward = function (seconds) {
+        console.log("Moving forward " + seconds + " seconds");
+    };
+    BasicMusicPlayer.prototype.pause = function () {
+        console.log("Pausing");
+    };
+    BasicMusicPlayer.prototype.play = function () {
+        console.log("Playing");
+    };
+    BasicMusicPlayer.prototype.rewind = function (seconds) {
+        console.log("Rewinding " + seconds);
+    };
+    BasicMusicPlayer.prototype.stop = function () {
+        console.log("Stopping");
+    };
+    return BasicMusicPlayer;
+}());
+function sayHelloTo(bar) {
+    console.log("Hello " + bar.firstName + ".. or should i call you Mr." + bar.lastName + "?");
+}
+var johnDoe = {
+    firstName: "John",
+    lastName: "Doe",
+    age: 42
+};
+sayHelloTo(johnDoe);
