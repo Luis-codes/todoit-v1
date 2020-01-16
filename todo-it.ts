@@ -1,107 +1,107 @@
-console.log("ToDoIt");
+// console.log("ToDoIt");
 
-let todoList: string[] = [];
+// let todoList: string[] = [];
 
-console.log("Current todo list: ", todoList);
+// console.log("Current todo list: ", todoList);
 
-const todoInput: HTMLInputElement = document.getElementById('todoInput') as HTMLInputElement;
+// const todoInput: HTMLInputElement = document.getElementById('todoInput') as HTMLInputElement;
 
-function addTodo() : void {
-    // if we don't have the todo input
-    if(todoInput == null) {
-        console.error('The todo input is missing from the page!');
-        return;
-    }
+// function addTodo() : void {
+//     // if we don't have the todo input
+//     if(todoInput == null) {
+//         console.error('The todo input is missing from the page!');
+//         return;
+//     }
 
-    // get the value from the input
-    const newTodo: string = todoInput.value;
+//     // get the value from the input
+//     const newTodo: string = todoInput.value;
 
-    // verify that there is text
-    if ('' !== newTodo.trim()) {
-        console.log('Adding todo: ', newTodo);
+//     // verify that there is text
+//     if ('' !== newTodo.trim()) {
+//         console.log('Adding todo: ', newTodo);
 
-        // add the new item to the list
-        todoList.push(newTodo);
-        console.log('New todo list: ', todoList);
+//         // add the new item to the list
+//         todoList.push(newTodo);
+//         console.log('New todo list: ', todoList);
 
-        // clear the input
-        todoInput.value = '';
+//         // clear the input
+//         todoInput.value = '';
 
-        // keep the list sorted
-        todoList.sort();
+//         // keep the list sorted
+//         todoList.sort();
 
-        // update the todo list
-        updateTodoList();
+//         // update the todo list
+//         updateTodoList();
 
-        // apply the todo list filter
-        filterTodoList();
-    }
-}
+//         // apply the todo list filter
+//         filterTodoList();
+//     }
+// }
 
-const todoListDiv: HTMLDivElement = document.getElementById('todoListContainer') as HTMLDivElement;
+// const todoListDiv: HTMLDivElement = document.getElementById('todoListContainer') as HTMLDivElement;
 
-function updateTodoList(): void {
-    console.log("Updating the rendered todo list");
-    todoListDiv.innerHTML = '';
-    todoListDiv.textContent = '';
+// function updateTodoList(): void {
+//     console.log("Updating the rendered todo list");
+//     todoListDiv.innerHTML = '';
+//     todoListDiv.textContent = '';
 
-    const ul = document.createElement('ul');
-    ul.setAttribute('id', 'todoList');
-    todoListDiv.appendChild(ul);
+//     const ul = document.createElement('ul');
+//     ul.setAttribute('id', 'todoList');
+//     todoListDiv.appendChild(ul);
 
-    todoList.forEach(item => {
-        const li = document.createElement('li');
-        li.setAttribute('class', 'todo-list-item');
-        li.innerHTML = `<a href='#' 
-        onclick='removeTodoListItem("${item}")'>${item}</a>`;
-        ul.appendChild(li);
-    });
-}
+//     todoList.forEach(item => {
+//         const li = document.createElement('li');
+//         li.setAttribute('class', 'todo-list-item');
+//         li.innerHTML = `<a href='#' 
+//         onclick='removeTodoListItem("${item}")'>${item}</a>`;
+//         ul.appendChild(li);
+//     });
+// }
 
-function filterTodoList(): void {
-    console.log("Filtering the rendered todo list");
+// function filterTodoList(): void {
+//     console.log("Filtering the rendered todo list");
 
-    const todoListHtml: HTMLUListElement = document.getElementById('todoList') as HTMLUListElement;
+//     const todoListHtml: HTMLUListElement = document.getElementById('todoList') as HTMLUListElement;
 
-    if (todoListHtml === null) {
-        console.log("Nothing to filter");
-        return;
-    }
+//     if (todoListHtml === null) {
+//         console.log("Nothing to filter");
+//         return;
+//     }
 
-    const todoListFilter = document.getElementById('todoFilter') as HTMLInputElement;
-    const todoListFilterText = todoListFilter.value.toUpperCase();
+//     const todoListFilter = document.getElementById('todoFilter') as HTMLInputElement;
+//     const todoListFilterText = todoListFilter.value.toUpperCase();
 
-    todoListHtml.childNodes.forEach((item) => {
-        let itemText: string | null = item.textContent;
-        if (itemText !== null) {
-            itemText = itemText.toUpperCase();
+//     todoListHtml.childNodes.forEach((item) => {
+//         let itemText: string | null = item.textContent;
+//         if (itemText !== null) {
+//             itemText = itemText.toUpperCase();
 
-            if (itemText.startsWith(todoListFilterText)) {
-                (item as HTMLLIElement).style.display = "list-item";
-            } else {
-                (item as HTMLLIElement).style.display = "none";
-            }
-        }
-    });
-}
+//             if (itemText.startsWith(todoListFilterText)) {
+//                 (item as HTMLLIElement).style.display = "list-item";
+//             } else {
+//                 (item as HTMLLIElement).style.display = "none";
+//             }
+//         }
+//     });
+// }
 
-function removeTodoListItem(itemToRemove: string): void {
-    console.log("item to remove: ", itemToRemove);
+// function removeTodoListItem(itemToRemove: string): void {
+//     console.log("item to remove: ", itemToRemove);
 
-    todoList = todoList.filter((value: string, _index, _array) =>{
-        if(value === itemToRemove) {
-            return false;
-        }
-        return true;
-    });
-    // unsafe alternative: todoList.splice(...)
+//     todoList = todoList.filter((value: string, _index, _array) =>{
+//         if(value === itemToRemove) {
+//             return false;
+//         }
+//         return true;
+//     });
+//     // unsafe alternative: todoList.splice(...)
 
-    // update the todo list
-    updateTodoList();
+//     // update the todo list
+//     updateTodoList();
 
-    // apply the todo list filter
-    filterTodoList();
-}
+//     // apply the todo list filter
+//     filterTodoList();
+// }
 
 // class Car {
 
@@ -315,3 +315,67 @@ function removeTodoListItem(itemToRemove: string): void {
 // interface SoccerClub extends Club {
 //     league: string;
 // }
+
+// class TodoItem {
+//     private readonly _creationTimestamp: number;
+//     private readonly _indentifier: string;
+    
+//     constructor(private _description: string, indentifier?: string) {
+//         this._creationTimestamp = new Date().getTime();
+
+//         if (indentifier) {
+//             this._indentifier = indentifier;
+//         } else {
+//             // this is just for the example; for any real projects, use
+//             // UUIDs instead.
+//         }
+//     }
+
+//     get creationTimestamp(): number {
+//         return this._creationTimestamp;
+//     }
+
+//     get identifier(): string {
+//         return this._indentifier;
+//     }
+
+//     get description(): string {
+//         return this._description
+//     }
+// }
+
+class TodoList {
+    private _todoList: ReadonlyArray<TodoItem> = [];
+
+    constructor(todoList?: TodoItem[]) {
+        //first we make sure that we have received a valid array
+        if (Array.isArray(todoList) && todoList.length) {
+            this._todoList = this._todoList.concat(todoList);
+        }
+    }
+
+    get todoList(): ReadonlyArray<TodoItem> {
+        return this._todoList
+    }
+
+    addTodo(todoItem: TodoItem) {
+        if(todoItem) {
+            // the value is "truthy":
+            // not null, not undefined, not NaN, not an empty string,
+            // not 0, not false
+            this._todoList = this._todoList.concat(todoItem);
+        }
+    }
+
+    removeTodo(itemId: string) {
+        if(itemId) {
+            this._todoList = this._todoList.filter(item => {
+                if(item.indentifier === itemId) {
+                    return false; // drop
+                } else {
+                    return true; // keep
+                }
+            });
+        }
+    }
+}

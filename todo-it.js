@@ -1,82 +1,82 @@
-console.log("ToDoIt");
-var todoList = [];
-console.log("Current todo list: ", todoList);
-var todoInput = document.getElementById('todoInput');
-function addTodo() {
-    // if we don't have the todo input
-    if (todoInput == null) {
-        console.error('The todo input is missing from the page!');
-        return;
-    }
-    // get the value from the input
-    var newTodo = todoInput.value;
-    // verify that there is text
-    if ('' !== newTodo.trim()) {
-        console.log('Adding todo: ', newTodo);
-        // add the new item to the list
-        todoList.push(newTodo);
-        console.log('New todo list: ', todoList);
-        // clear the input
-        todoInput.value = '';
-        // keep the list sorted
-        todoList.sort();
-        // update the todo list
-        updateTodoList();
-        // apply the todo list filter
-        filterTodoList();
-    }
-}
-var todoListDiv = document.getElementById('todoListContainer');
-function updateTodoList() {
-    console.log("Updating the rendered todo list");
-    todoListDiv.innerHTML = '';
-    todoListDiv.textContent = '';
-    var ul = document.createElement('ul');
-    ul.setAttribute('id', 'todoList');
-    todoListDiv.appendChild(ul);
-    todoList.forEach(function (item) {
-        var li = document.createElement('li');
-        li.setAttribute('class', 'todo-list-item');
-        li.innerHTML = "<a href='#' \n        onclick='removeTodoListItem(\"" + item + "\")'>" + item + "</a>";
-        ul.appendChild(li);
-    });
-}
-function filterTodoList() {
-    console.log("Filtering the rendered todo list");
-    var todoListHtml = document.getElementById('todoList');
-    if (todoListHtml === null) {
-        console.log("Nothing to filter");
-        return;
-    }
-    var todoListFilter = document.getElementById('todoFilter');
-    var todoListFilterText = todoListFilter.value.toUpperCase();
-    todoListHtml.childNodes.forEach(function (item) {
-        var itemText = item.textContent;
-        if (itemText !== null) {
-            itemText = itemText.toUpperCase();
-            if (itemText.startsWith(todoListFilterText)) {
-                item.style.display = "list-item";
-            }
-            else {
-                item.style.display = "none";
-            }
-        }
-    });
-}
-function removeTodoListItem(itemToRemove) {
-    console.log("item to remove: ", itemToRemove);
-    todoList = todoList.filter(function (value, _index, _array) {
-        if (value === itemToRemove) {
-            return false;
-        }
-        return true;
-    });
-    // unsafe alternative: todoList.splice(...)
-    // update the todo list
-    updateTodoList();
-    // apply the todo list filter
-    filterTodoList();
-}
+// console.log("ToDoIt");
+// let todoList: string[] = [];
+// console.log("Current todo list: ", todoList);
+// const todoInput: HTMLInputElement = document.getElementById('todoInput') as HTMLInputElement;
+// function addTodo() : void {
+//     // if we don't have the todo input
+//     if(todoInput == null) {
+//         console.error('The todo input is missing from the page!');
+//         return;
+//     }
+//     // get the value from the input
+//     const newTodo: string = todoInput.value;
+//     // verify that there is text
+//     if ('' !== newTodo.trim()) {
+//         console.log('Adding todo: ', newTodo);
+//         // add the new item to the list
+//         todoList.push(newTodo);
+//         console.log('New todo list: ', todoList);
+//         // clear the input
+//         todoInput.value = '';
+//         // keep the list sorted
+//         todoList.sort();
+//         // update the todo list
+//         updateTodoList();
+//         // apply the todo list filter
+//         filterTodoList();
+//     }
+// }
+// const todoListDiv: HTMLDivElement = document.getElementById('todoListContainer') as HTMLDivElement;
+// function updateTodoList(): void {
+//     console.log("Updating the rendered todo list");
+//     todoListDiv.innerHTML = '';
+//     todoListDiv.textContent = '';
+//     const ul = document.createElement('ul');
+//     ul.setAttribute('id', 'todoList');
+//     todoListDiv.appendChild(ul);
+//     todoList.forEach(item => {
+//         const li = document.createElement('li');
+//         li.setAttribute('class', 'todo-list-item');
+//         li.innerHTML = `<a href='#' 
+//         onclick='removeTodoListItem("${item}")'>${item}</a>`;
+//         ul.appendChild(li);
+//     });
+// }
+// function filterTodoList(): void {
+//     console.log("Filtering the rendered todo list");
+//     const todoListHtml: HTMLUListElement = document.getElementById('todoList') as HTMLUListElement;
+//     if (todoListHtml === null) {
+//         console.log("Nothing to filter");
+//         return;
+//     }
+//     const todoListFilter = document.getElementById('todoFilter') as HTMLInputElement;
+//     const todoListFilterText = todoListFilter.value.toUpperCase();
+//     todoListHtml.childNodes.forEach((item) => {
+//         let itemText: string | null = item.textContent;
+//         if (itemText !== null) {
+//             itemText = itemText.toUpperCase();
+//             if (itemText.startsWith(todoListFilterText)) {
+//                 (item as HTMLLIElement).style.display = "list-item";
+//             } else {
+//                 (item as HTMLLIElement).style.display = "none";
+//             }
+//         }
+//     });
+// }
+// function removeTodoListItem(itemToRemove: string): void {
+//     console.log("item to remove: ", itemToRemove);
+//     todoList = todoList.filter((value: string, _index, _array) =>{
+//         if(value === itemToRemove) {
+//             return false;
+//         }
+//         return true;
+//     });
+//     // unsafe alternative: todoList.splice(...)
+//     // update the todo list
+//     updateTodoList();
+//     // apply the todo list filter
+//     filterTodoList();
+// }
 // class Car {
 // }
 // let car: Car = new Car();
@@ -245,3 +245,38 @@ function removeTodoListItem(itemToRemove) {
 // interface SoccerClub extends Club {
 //     league: string;
 // }
+var TodoItem = /** @class */ (function () {
+    function TodoItem(_description, indentifier) {
+        this._description = _description;
+        this._creationTimestamp = new Date().getTime();
+        if (indentifier) {
+            this._indentifier = indentifier;
+        }
+        else {
+            // this is just for the example; for any real projects, use
+            // UUIDs instead.
+        }
+    }
+    Object.defineProperty(TodoItem.prototype, "creationTimestamp", {
+        get: function () {
+            return this._creationTimestamp;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(TodoItem.prototype, "identifier", {
+        get: function () {
+            return this._indentifier;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(TodoItem.prototype, "description", {
+        get: function () {
+            return this._description;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    return TodoItem;
+}());
