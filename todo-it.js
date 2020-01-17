@@ -245,38 +245,83 @@
 // interface SoccerClub extends Club {
 //     league: string;
 // }
-var TodoItem = /** @class */ (function () {
-    function TodoItem(_description, indentifier) {
-        this._description = _description;
-        this._creationTimestamp = new Date().getTime();
-        if (indentifier) {
-            this._indentifier = indentifier;
-        }
-        else {
-            // this is just for the example; for any real projects, use
-            // UUIDs instead.
+// class TodoItem {
+//     private readonly _creationTimestamp: number;
+//     private readonly _indentifier: string;
+//     constructor(private _description: string, indentifier?: string) {
+//         this._creationTimestamp = new Date().getTime();
+//         if (indentifier) {
+//             this._indentifier = indentifier;
+//         } else {
+//             // this is just for the example; for any real projects, use
+//             // UUIDs instead.
+//         }
+//     }
+//     get creationTimestamp(): number {
+//         return this._creationTimestamp;
+//     }
+//     get identifier(): string {
+//         return this._indentifier;
+//     }
+//     get description(): string {
+//         return this._description
+//     }
+// }
+var TodoList = /** @class */ (function () {
+    function TodoList(todoList) {
+        this._todoList = [];
+        //first we make sure that we have received a valid array
+        if (Array.isArray(todoList) && todoList.length) {
+            this._todoList = this._todoList.concat(todoList);
         }
     }
-    Object.defineProperty(TodoItem.prototype, "creationTimestamp", {
+    Object.defineProperty(TodoList.prototype, "todoList", {
         get: function () {
-            return this._creationTimestamp;
+            return this._todoList;
         },
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(TodoItem.prototype, "identifier", {
-        get: function () {
-            return this._indentifier;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(TodoItem.prototype, "description", {
-        get: function () {
-            return this._description;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    return TodoItem;
+    TodoList.prototype.addTodo = function (todoItem) {
+        if (todoItem) {
+            // the value is "truthy":
+            // not null, not undefined, not NaN, not an empty string,
+            // not 0, not false
+            this._todoList = this._todoList.concat(todoItem);
+        }
+    };
+    TodoList.prototype.removeTodo = function (itemId) {
+        if (itemId) {
+            this._todoList = this._todoList.filter(function (item) {
+                if (item.indentifier === itemId) {
+                    return false; // drop
+                }
+                else {
+                    return true; // keep
+                }
+            });
+        }
+    };
+    return TodoList;
+}());
+var HTMLTodoListView = /** @class */ (function () {
+    function HTMLTodoListView() {
+        // TODO
+    }
+    HTMLTodoListView.prototype.clearInput = function () {
+        // TODO
+    };
+    HTMLTodoListView.prototype.getFilter = function () {
+        // TODO
+    };
+    HTMLTodoListView.prototype.getInput = function () {
+        // TODO
+    };
+    HTMLTodoListView.prototype.render = function (todoList) {
+        // TODO
+    };
+    HTMLTodoListView.prototype.filter = function () {
+        // TODO
+    };
+    return HTMLTodoListView;
 }());

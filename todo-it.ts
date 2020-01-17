@@ -379,3 +379,37 @@ class TodoList {
         }
     }
 }
+
+interface TodoListView {
+    render(todoList: ReadonlyArray<TodoItem>): void;
+    getInput(): TodoItem;
+    getFilter(): string;
+    clearInput(): void;
+    filter(): void;
+}
+
+class HTMLTodoListView implements TodoListView {
+    constructor() {
+        // TODO
+    }
+
+    clearInput(): void {
+        // TODO
+    }
+
+    getFilter(): string {
+        // TODO
+    }
+
+    getInput(): TodoItem {
+        // TODO
+    }
+
+    render(todoList: ReadonlyArray<TodoItem>): void {
+        // TODO
+    }
+
+    filter(): void {
+        // TODO
+    }
+}
